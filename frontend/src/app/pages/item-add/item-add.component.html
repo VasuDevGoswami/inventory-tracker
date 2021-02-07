@@ -1,0 +1,92 @@
+<h3 align="center" class="display-4 mb-5">Add Item</h3>
+
+<div class="container">
+  <div class="col-xs-12">
+    <form (ngSubmit)="addItem()" #form="ngForm">
+
+      <!--  name desc price, imageUrl -->
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          [(ngModel)]="item.name"
+          name="name"
+          #name="ngModel"
+          required
+          class="form-control"
+          id="name">
+        <div *ngIf="name.invalid && (name.dirty || name.touched)">
+          <div *ngIf="name.errors.required" class="text-danger">
+            Name is required.
+          </div>
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control form-control-lg text-left"
+                  [(ngModel)]="item.description"
+                  name="description"
+                  #desc="ngModel"
+                  id="description"></textarea>
+
+        <div *ngIf="desc.invalid && (desc.dirty || desc.touched)">
+          <div *ngIf="desc.errors.required" class="text-danger">
+            Description is required.
+          </div>
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <label for="price">Price</label>
+        <input
+          type="text"
+          [(ngModel)]="item.price"
+          name="price"
+          #price="ngModel"
+          required
+          pattern="^[1-9]+[0-9]*$"
+          class="form-control"
+          id="price">
+
+        <div *ngIf="price.invalid && (price.dirty || price.touched)">
+          <div *ngIf="price.errors.required;else invalid" class="text-danger">
+            Price is required.
+          </div>
+          <ng-template #invalid>
+            <div class="text-danger">
+              Price is invalid
+            </div>
+          </ng-template>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="imageUrl">Image Url</label>
+        <input
+          type="text"
+          [(ngModel)]="item.imageUrl"
+          #imageUrl="ngModel"
+          name="imageUrl"
+          id="imageUrl"
+          class="form-control">
+
+        <div *ngIf="imageUrl.invalid && (imageUrl.dirty || imageUrl.touched)">
+          <div *ngIf="imageUrl.errors.required" class="text-danger">
+            Image-Url is required
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button type="submit" [disabled]="!form.form.valid" class="btn btn-success">Add Item</button>
+        |
+        <button type="button" routerLink="/" class="btn btn-danger">Cancel</button>
+      </div>
+
+    </form>
+
+  </div>
+</div>

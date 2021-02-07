@@ -1,0 +1,24 @@
+<br>
+<div class="container">
+  <div class="row card-deck text-center">
+    <div class="center">
+      <div class="card mb-4"  >
+        <img height="50%" class="card-img-top" src="{{item.imageUrl}}" alt="{{item.name}}">
+        <div class="card-body">
+          <div class="text-left">
+            <h5 class="card-title"><strong>Name: </strong>  {{item.name}}</h5>
+
+            <p class="card-text"><strong>Description: </strong> {{item.description}}.</p>
+            <p class="card-text"><strong>Price: </strong>{{item.price | currency}}</p>
+          </div>
+          <br>
+
+          <div class="float-left">
+            <a routerLink="/" class="btn btn-success">Back to Dashboard</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
